@@ -54,8 +54,9 @@
     self.scence.scaleMode = SKSceneScaleModeAspectFill;
     
     //load the level
-    self.level = [[RWTLevel alloc] init];
+    self.level = [[RWTLevel alloc] initWithFile:@"Level_1"];
     self.scence.level = self.level;
+    [self.scence addTile];
     
     //Present the scene
     [skview presentScene:self.scence];

@@ -15,5 +15,6 @@
 @property (strong, nonatomic) RWTLevel *level;
 
 -(void)addSpritesForCookies:(NSSet *)cookies;
+-(void)addTile;
 
 @end
