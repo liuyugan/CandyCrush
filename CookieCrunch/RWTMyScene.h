@@ -8,6 +8,12 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+@class RWTLevel;//?
+
 @interface RWTMyScene : SKScene
+
+@property (strong, nonatomic) RWTLevel *level;
+
+-(void)addSpritesForCookies:(NSSet *)cookies;
 
 @end
