@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7EB2F641-6AC2-4532-B998-1D8E478CDAC2</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CookieCrunch</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>254D746C-9C92-479B-BFF3-467912B9F213</key>
+		<string>https://github.com/liuyugan/CandyCrush.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CookieCrunch.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>254D746C-9C92-479B-BFF3-467912B9F213</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/liuyugan/CandyCrush.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>254D746C-9C92-479B-BFF3-467912B9F213</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>254D746C-9C92-479B-BFF3-467912B9F213</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CookieCrunch</string>
+		</dict>
+	</array>
+</dict>
+</plist>
