@@ -58,6 +58,29 @@
     self.scence.level = self.level;
     [self.scence addTile];
     
+    //set swap handler.
+    id block = ^(RWTSwap *swap){
+        
+        self.view.userInteractionEnabled = NO;
+        
+        if ([self.level isPossibleSwap:swap]) {
+            
+            [self.level performSwap:swap];
+            
+            [self.scence animateSwap:swap completion:^{
+                self.view.userInteractionEnabled = YES;
+            }];
+        } else {
+            [self.scence animateInvalidSwap:swap completion:^{
+            self.view.userInteractionEnabled = YES;
+            }];
+            
+        }
+        
+    };
+    
+    self.scence.swipeHandler = block;
+    
     //Present the scene
     [skview presentScene:self.scence];
     

@@ -9,6 +9,7 @@
 #import "RWTMyScene.h"
 #import "RWTCookie.h"
 #import "RWTLevel.h"
+#import "RWTSwap.h"
 
 static const CGFloat TileWidth = 32.0;
 static const CGFloat TileHeight = 36.0;
@@ -21,26 +22,20 @@ static const CGFloat TileHeight = 36.0;
 
 @property (assign, nonatomic) NSInteger swipeFromColumn;
 @property (assign, nonatomic) NSInteger swipeFromRow;
+@property (strong, nonatomic) SKSpriteNode *selectionSprite;
+
+@property (strong, nonatomic) SKAction *swapSound;
+@property (strong, nonatomic) SKAction *invilidSwapSound;
+@property (strong, nonatomic) SKAction *matchSound;
+@property (strong, nonatomic) SKAction *fallingCookieSound;
+@property (strong, nonatomic) SKAction *addCookieSound;
+
 @end
 
 @implementation RWTMyScene
 
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
-        /* Setup your scene here */
-        
-        
-        /*self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
-        
-        SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-        
-        myLabel.text = @"Hello, World!";
-        myLabel.fontSize = 30;
-        myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                       CGRectGetMidY(self.frame));
-        
-        [self addChild:myLabel];*/
-       
         
         self.anchorPoint = CGPointMake(0.5, 0.5);
         SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"Background"];
@@ -62,6 +57,9 @@ static const CGFloat TileHeight = 36.0;
         [self.gameLayer addChild:self.cookieLayer];
         
         self.swipeFromColumn = self.swipeFromRow = NSNotFound;
+        self.selectionSprite = [SKSpriteNode node];
+        
+        [self preloadResources];
     }
     return self;
 }
@@ -131,6 +129,8 @@ static const CGFloat TileHeight = 36.0;
             //4
             self.swipeFromColumn = column;
             self.swipeFromRow = row;
+            //highlight selected Cooike.
+            [self showSelectionIndicatorForCooike:cookie];
         }
     }
 }
@@ -160,12 +160,82 @@ static const CGFloat TileHeight = 36.0;
         }
         if (horzDelta != 0 || vertDelta != 0) {
             [self trySwapHorizontal:horzDelta vertical:vertDelta];
-            
+            //hithlight selected Cooike.
+            [self hideSelectonIndicator];
             //5
             self.swipeFromColumn = NSNotFound;
         }
         
     }
+}
+
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    self.swipeFromRow = self.swipeFromRow = NSNotFound;
+    //hithlight selected Cooike.
+    if (self.selectionSprite.parent != nil && self.swipeFromColumn != NSNotFound) {
+        [self hideSelectonIndicator];
+    }
+}
+
+-(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self touchesEnded:touches withEvent:event];
+}
+
+-(void)animateSwap:(RWTSwap *)swap completion:(dispatch_block_t)completion{//?dispatch_block_t is a simply shorthand for a block that retuens void and takes no parameters.
+    //put the cookie you started with on top.
+    swap.cookieA.sprite.zPosition = 100;
+    swap.cookieB.sprite.zPosition = 90;
+    
+    const NSTimeInterval Duration = 0.3;
+    
+    SKAction *moveA = [SKAction moveTo:swap.cookieB.sprite.position duration:Duration];
+    moveA.timingMode = SKActionTimingEaseOut;
+    [swap.cookieA.sprite runAction:[SKAction sequence:@[moveA, [SKAction runBlock:completion]]]];
+    
+    SKAction *moveB = [SKAction moveTo:swap.cookieA.sprite.position duration:Duration];
+    moveB.timingMode = SKActionTimingEaseOut;
+    [swap.cookieB.sprite runAction:moveB];
+    //Sound
+    [self runAction:self.swapSound];
+}
+
+-(void)animateInvalidSwap:(RWTSwap *)swap completion:(dispatch_block_t)completion{
+    swap.cookieA.sprite.zPosition = 100;
+    swap.cookieB.sprite.zPosition = 90;
+    
+    const NSTimeInterval Duration = 0.2;
+    
+    SKAction *moveA = [SKAction moveTo:swap.cookieB.sprite.position duration:Duration];
+    moveA.timingMode = SKActionTimingEaseOut;
+    
+    SKAction *moveB = [SKAction moveTo:swap.cookieA.sprite.position duration:Duration];
+    moveB.timingMode = SKActionTimingEaseOut;
+    
+    [swap.cookieA.sprite runAction:[SKAction sequence:@[moveA, moveB, [SKAction runBlock:completion]]]];
+    [swap.cookieB.sprite runAction:[SKAction sequence:@[moveB,moveA]]];
+    
+    [self runAction:self.invilidSwapSound];
+}
+
+-(void)showSelectionIndicatorForCooike:(RWTCookie *)cooike{
+    //if the selection indicator is still visible ,the first remove it.
+    
+    if (self.selectionSprite.parent != nil) {
+        [self.selectionSprite removeFromParent];
+    }
+    
+    SKTexture *texture = [SKTexture textureWithImageNamed:[cooike highlightedSpirteNale]];
+    self.selectionSprite.size = texture.size;
+    [self.selectionSprite runAction:[SKAction setTexture:texture]];
+     
+     [cooike.sprite addChild:self.selectionSprite];
+     self.selectionSprite.alpha = 1.0;
+}
+
+-(void)hideSelectonIndicator{
+    [self.selectionSprite runAction:[SKAction sequence:@[
+                                                         [SKAction fadeOutWithDuration:0.3],
+                                                         [SKAction removeFromParent]]]];
 }
 
 -(void)trySwapHorizontal:(NSInteger)horzDelta vertical:(NSInteger)verDelta{
@@ -176,7 +246,7 @@ static const CGFloat TileHeight = 36.0;
     //2
     if (toColumn < 0 || toColumn >= NumColumns)   return;
     if (toRow < 0 || toRow >= NumRows)   return;
-
+    
     //3
     RWTCookie *toCooike = [self.level cookieAtColumn:toColumn row:toRow];
     if (toCooike == nil) {
@@ -186,16 +256,23 @@ static const CGFloat TileHeight = 36.0;
     //4
     RWTCookie *fromCooike = [self.level cookieAtColumn:self.swipeFromColumn row:self.swipeFromRow];
     
-    NSLog(@"*** swapping %@ with %@",fromCooike,toCooike);
+    //NSLog(@"*** swapping %@ with %@",fromCooike,toCooike);
+    
+    if (self.swipeHandler != nil) {
+        RWTSwap *swap = [[RWTSwap alloc] init];
+        swap.cookieA = fromCooike;
+        swap.cookieB = toCooike;
+        
+        self.swipeHandler(swap);
+    }
 }
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    self.swipeFromRow = self.swipeFromRow = NSNotFound;
+-(void)preloadResources{
+    self.swapSound = [SKAction playSoundFileNamed:@"Chomp.wav" waitForCompletion:NO];
+    self.invilidSwapSound = [SKAction playSoundFileNamed:@"Error.wav" waitForCompletion:NO];
+    self.matchSound = [SKAction playSoundFileNamed:@"Ka-Ching.wav" waitForCompletion:NO];
+    self.fallingCookieSound = [SKAction playSoundFileNamed:@"Scrape.wav" waitForCompletion:NO];
+    self.addCookieSound = [SKAction playSoundFileNamed:@"Drip.wav" waitForCompletion:NO];
 }
-
--(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
-    [self touchesEnded:touches withEvent:event];
-}
-
 
 @end
