@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2332B0701943EC33002FC0E5 /* RWTChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 2332B06F1943EC33002FC0E5 /* RWTChain.m */; };
 		233F84341936CB8D00DEAB75 /* Level_0.json in Resources */ = {isa = PBXBuildFile; fileRef = 233F842F1936CB8D00DEAB75 /* Level_0.json */; };
 		233F84351936CB8D00DEAB75 /* Level_1.json in Resources */ = {isa = PBXBuildFile; fileRef = 233F84301936CB8D00DEAB75 /* Level_1.json */; };
 		233F84361936CB8D00DEAB75 /* Level_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 233F84311936CB8D00DEAB75 /* Level_2.json */; };
@@ -14,6 +15,7 @@
 		233F84381936CB8D00DEAB75 /* Level_4.json in Resources */ = {isa = PBXBuildFile; fileRef = 233F84331936CB8D00DEAB75 /* Level_4.json */; };
 		233F843B1936CC5700DEAB75 /* RWTTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 233F843A1936CC5700DEAB75 /* RWTTile.m */; };
 		233F843E19370DA100DEAB75 /* RWTSwap.m in Sources */ = {isa = PBXBuildFile; fileRef = 233F843D19370DA100DEAB75 /* RWTSwap.m */; };
+		23B10173194F5561008D2036 /* Grid.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 23B10172194F5561008D2036 /* Grid.atlas */; };
 		23BCE80219342BB6008A33DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23BCE80119342BB6008A33DB /* Foundation.framework */; };
 		23BCE80419342BB6008A33DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23BCE80319342BB6008A33DB /* CoreGraphics.framework */; };
 		23BCE80619342BB6008A33DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23BCE80519342BB6008A33DB /* UIKit.framework */; };
@@ -52,6 +54,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2332B06E1943EC33002FC0E5 /* RWTChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTChain.h; sourceTree = "<group>"; };
+		2332B06F1943EC33002FC0E5 /* RWTChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTChain.m; sourceTree = "<group>"; };
+		2332B071194401D8002FC0E5 /* Script.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Script.sh; sourceTree = "<group>"; };
 		233F842F1936CB8D00DEAB75 /* Level_0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_0.json; sourceTree = "<group>"; };
 		233F84301936CB8D00DEAB75 /* Level_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_1.json; sourceTree = "<group>"; };
 		233F84311936CB8D00DEAB75 /* Level_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_2.json; sourceTree = "<group>"; };
@@ -59,8 +64,9 @@
 		233F84331936CB8D00DEAB75 /* Level_4.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Level_4.json; sourceTree = "<group>"; };
 		233F84391936CC5700DEAB75 /* RWTTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTTile.h; sourceTree = "<group>"; };
 		233F843A1936CC5700DEAB75 /* RWTTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTTile.m; sourceTree = "<group>"; };
-		233F843C19370DA100DEAB75 /* RWTSwap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTSwap.h; sourceTree = "<group>"; };
-		233F843D19370DA100DEAB75 /* RWTSwap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTSwap.m; sourceTree = "<group>"; };
+		233F843C19370DA100DEAB75 /* RWTSwap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RWTSwap.h; path = ../RWTSwap.h; sourceTree = "<group>"; };
+		233F843D19370DA100DEAB75 /* RWTSwap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RWTSwap.m; path = ../RWTSwap.m; sourceTree = "<group>"; };
+		23B10172194F5561008D2036 /* Grid.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Grid.atlas; sourceTree = "<group>"; };
 		23BCE7FE19342BB6008A33DB /* CookieCrunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookieCrunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23BCE80119342BB6008A33DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		23BCE80319342BB6008A33DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -84,6 +90,7 @@
 		23BCE83119342BB6008A33DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		23BCE83319342BB6008A33DB /* CookieCrunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CookieCrunchTests.m; sourceTree = "<group>"; };
 		23BCE83F19342D9D008A33DB /* Sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Sprites.atlas; sourceTree = "<group>"; };
+		23D4303F194C9C38002B3012 /* CookieCrunch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CookieCrunch-Bridging-Header.h"; sourceTree = "<group>"; };
 		23EA2EDC1935C6D300191BE5 /* RWTCookie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTCookie.h; sourceTree = "<group>"; };
 		23EA2EDD1935C6D300191BE5 /* RWTCookie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTCookie.m; sourceTree = "<group>"; };
 		23EA2EDF1935CBA100191BE5 /* RWTLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTLevel.h; sourceTree = "<group>"; };
@@ -136,9 +143,8 @@
 		23BCE7F519342BB6008A33DB = {
 			isa = PBXGroup;
 			children = (
+				2332B071194401D8002FC0E5 /* Script.sh */,
 				23F72F0019386D2800FEC8A9 /* Sounds */,
-				233F843C19370DA100DEAB75 /* RWTSwap.h */,
-				233F843D19370DA100DEAB75 /* RWTSwap.m */,
 				23BCE80919342BB6008A33DB /* CookieCrunch */,
 				23BCE82D19342BB6008A33DB /* CookieCrunchTests */,
 				23BCE80019342BB6008A33DB /* Frameworks */,
@@ -170,6 +176,10 @@
 		23BCE80919342BB6008A33DB /* CookieCrunch */ = {
 			isa = PBXGroup;
 			children = (
+				2332B06E1943EC33002FC0E5 /* RWTChain.h */,
+				2332B06F1943EC33002FC0E5 /* RWTChain.m */,
+				233F843C19370DA100DEAB75 /* RWTSwap.h */,
+				233F843D19370DA100DEAB75 /* RWTSwap.m */,
 				23BCE81219342BB6008A33DB /* RWTAppDelegate.h */,
 				23BCE81319342BB6008A33DB /* RWTAppDelegate.m */,
 				23BCE81519342BB6008A33DB /* Main.storyboard */,
@@ -181,12 +191,14 @@
 				23EA2EDD1935C6D300191BE5 /* RWTCookie.m */,
 				23EA2EDF1935CBA100191BE5 /* RWTLevel.h */,
 				23EA2EE01935CBA100191BE5 /* RWTLevel.m */,
+				23B10172194F5561008D2036 /* Grid.atlas */,
 				233F842E1936CB8D00DEAB75 /* Levels */,
 				23BCE82019342BB6008A33DB /* Images.xcassets */,
 				23BCE83F19342D9D008A33DB /* Sprites.atlas */,
 				23BCE80A19342BB6008A33DB /* Supporting Files */,
 				233F84391936CC5700DEAB75 /* RWTTile.h */,
 				233F843A1936CC5700DEAB75 /* RWTTile.m */,
+				23D4303F194C9C38002B3012 /* CookieCrunch-Bridging-Header.h */,
 			);
 			path = CookieCrunch;
 			sourceTree = "<group>";
@@ -315,6 +327,7 @@
 				23BCE80E19342BB6008A33DB /* InfoPlist.strings in Resources */,
 				23F72F0819386D2800FEC8A9 /* Drip.wav in Resources */,
 				233F84381936CB8D00DEAB75 /* Level_4.json in Resources */,
+				23B10173194F5561008D2036 /* Grid.atlas in Resources */,
 				23F72F0919386D2800FEC8A9 /* Error.wav in Resources */,
 				233F84361936CB8D00DEAB75 /* Level_2.json in Resources */,
 				23F72F0C19386D2800FEC8A9 /* Scrape.wav in Resources */,
@@ -366,6 +379,7 @@
 				23BCE81A19342BB6008A33DB /* RWTViewController.m in Sources */,
 				23BCE81419342BB6008A33DB /* RWTAppDelegate.m in Sources */,
 				233F843E19370DA100DEAB75 /* RWTSwap.m in Sources */,
+				2332B0701943EC33002FC0E5 /* RWTChain.m in Sources */,
 				233F843B1936CC5700DEAB75 /* RWTTile.m in Sources */,
 				23EA2EDE1935C6D300191BE5 /* RWTCookie.m in Sources */,
 				23BCE81019342BB6008A33DB /* main.m in Sources */,
@@ -496,12 +510,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CookieCrunch/CookieCrunch-Prefix.pch";
 				INFOPLIST_FILE = "CookieCrunch/CookieCrunch-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "CookieCrunch/CookieCrunch-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -512,12 +530,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CookieCrunch/CookieCrunch-Prefix.pch";
 				INFOPLIST_FILE = "CookieCrunch/CookieCrunch-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "CookieCrunch/CookieCrunch-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
